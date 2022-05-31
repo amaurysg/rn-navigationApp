@@ -1,5 +1,8 @@
 # rn-navigationApp
-
+## Navigation test project. 
+## Applying best practices, such as the use of RootStackNavigator. 
+## Creation of flows with arguments.
+## Creation of side menu drawer. 
 
 https://user-images.githubusercontent.com/5247198/171276298-cc5f1542-47d6-4fac-a741-853291f6f12a.mov
 
