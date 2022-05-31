@@ -7,7 +7,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 interface Props extends StackScreenProps<any, any> {}
 
 export const Pagina1Screens = ({navigation}: Props) => {
-  console.log(navigation);
+  //console.log(navigation);
   return (
     <View style={styles.globalMargin}>
       <Text style={styles.title}>Pagina1=Screen</Text>

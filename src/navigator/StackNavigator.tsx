@@ -11,6 +11,7 @@ export type RootStackParams = {
   Pagina2Screens: undefined;
   Pagina3Screens: undefined;
   PersonaScreens: {id: number; name: string}; //also can be a isolated interface,
+  SettingsScreens: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParams>();

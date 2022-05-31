@@ -6,7 +6,13 @@ import {
 } from '@react-navigation/drawer';
 import {StackNavigator} from './StackNavigator';
 import {SettingsScreens} from '../screens/SettingsScreens';
-import {Image, Text, useWindowDimensions, View} from 'react-native';
+import {
+  Image,
+  Text,
+  TouchableOpacity,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import {styles} from '../theme/appTheme';
 
 const Drawer = createDrawerNavigator();
@@ -32,17 +38,25 @@ export const LateralMenuFinal = () => {
   );
 };
 
-const InternalMenu = (props: DrawerContentComponentProps) => {
+const InternalMenu = ({navigation}: DrawerContentComponentProps) => {
   return (
     <>
       <DrawerContentScrollView>
         <View style={styles.avatarContainer}>
-            <Image
-              source={{
-                uri: 'https://cdn-icons-png.flaticon.com/512/147/147140.png',
-              }}
-              style={styles.avatar}
-            />
+          <Image
+            source={{
+              uri: 'https://cdn-icons-png.flaticon.com/512/147/147140.png',
+            }}
+            style={styles.avatar}
+          />
+        </View>
+        <View style={styles.menuLateralOptions}>
+          <TouchableOpacity style={styles.menuButtonOptions} onPress={()=>navigation.navigate('Pagina1Screens')}>
+            <Text style={styles.menuTextOptions}>Navegacion</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuButtonOptions} onPress={()=>navigation.navigate('SettingsScreens')}>
+            <Text style={styles.menuTextOptions}>Ajustes</Text>
+          </TouchableOpacity>
         </View>
       </DrawerContentScrollView>
     </>

@@ -29,5 +29,16 @@ export const styles = StyleSheet.create({
     borderRadius:50,
     marginLeft:5,
     
+  },
+  menuLateralOptions:{
+    marginVertical:10, 
+    alignItems:'center'
+  },
+  menuButtonOptions:{
+    marginVertical:5, 
+    fontSize:22,
+  },
+  menuTextOptions:{
+    fontSize:22,
   }
 });
