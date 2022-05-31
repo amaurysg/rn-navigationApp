@@ -4,12 +4,13 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Text, View} from 'react-native';
 import {StackNavigator} from './src/navigator/StackNavigator';
 import { LateralMenu } from './src/navigator/LateralMenu';
+import { LateralMenuFinal } from './src/navigator/LateralMenuFinal';
 
 const App = () => {
   return (
     <NavigationContainer>
      {/*  <StackNavigator /> */}
-     <LateralMenu/>
+<LateralMenuFinal/>
     </NavigationContainer>
   );
 };

@@ -17,4 +17,17 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 5,
   },
+  avatarContainer:{
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  avatar:{
+    height:100,
+    width:100,
+    borderWidth:2,
+    borderColor:'grey',
+    borderRadius:50,
+    marginLeft:5,
+    
+  }
 });
