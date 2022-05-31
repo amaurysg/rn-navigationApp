@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useReducer} from 'react';
 import {createContext} from 'react';
+import { authReducer } from './authReducer';
 
 //Define data that you want have !
 export interface AuthState {
@@ -9,7 +10,7 @@ export interface AuthState {
 //Define Initial State
 export const authInitialState: AuthState = {
   isLoggedIn: false,
-  username: 'Amaury',
+  username: 'undefined',
 };
 
 // Lo usaremos, para decirle a React como luce y qué expone el context
@@ -22,9 +23,14 @@ export const AuthContext = createContext({} as AuthContextProps);
 
 //Component that provide state !
 export const AuthProvider = ({children}: any) => {
+  const [authState, dispatch] = useReducer( authReducer , authInitialState);
+  const signIn = () =>{
+    dispatch({type:'signIn'})
+  }
+
   return (
     <AuthContext.Provider
-      value={{authState: authInitialState, signIn: () => {}}}>
+      value={{authState, signIn: signIn}}>
       {children}
     </AuthContext.Provider>
   );

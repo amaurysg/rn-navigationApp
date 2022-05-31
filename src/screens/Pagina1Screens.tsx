@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
 import {Button, Text, View} from 'react-native';
 import {styles} from '../theme/appTheme';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import { AuthContext } from '../context/AuthContext';
 
 interface Props extends StackScreenProps<any, any> {}
 
 export const Pagina1Screens = ({navigation}: Props) => {
   //console.log(navigation);
-  return (
+  const {signIn, authState :{isLoggedIn}} = useContext(AuthContext)
+   return (
     <View style={styles.globalMargin}>
       <Text style={styles.title}>Pagina1=Screen</Text>
       <Button
@@ -36,6 +38,7 @@ export const Pagina1Screens = ({navigation}: Props) => {
           <Text>Lore</Text>
         </TouchableOpacity>
       </View>
+       { isLoggedIn && <Button title='SignIn' onPress={signIn}></Button>}
     </View>
   );
 };
