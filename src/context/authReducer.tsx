@@ -1,6 +1,6 @@
 import {AuthState} from './AuthContext';
 
-type AuthAction = {type: 'signIn'};
+type AuthAction = {type: 'signIn'} | {type: 'logOut'}| {type: 'changeName', payload: string};
 
 //Siempre debe retonar un estado de tipo AuthState
 export const authReducer = (
@@ -13,6 +13,17 @@ export const authReducer = (
         ...state,
         isLoggedIn: true,
         username: 'no-user-name-yet',
+      };
+    case 'logOut':
+      return {
+        ...state,
+        isLoggedIn:false,
+        username: undefined,
+      };
+    case 'changeName':
+      return {
+        ...state,
+        username: action.payload,
       };
 
     default:

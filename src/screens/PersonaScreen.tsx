@@ -1,9 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
 import {Button, Text, View} from 'react-native';
 import {styles} from '../theme/appTheme';
 import {parseAsync} from '@babel/core';
 import {RootStackParams} from '../navigator/StackNavigator';
+import { AuthContext } from '../context/AuthContext';
 
 //Good practice, define here RootStackParams as Prop and PersonaScreens as string (replace any, any)
 interface Props extends StackScreenProps<RootStackParams, 'PersonaScreens'> {}
@@ -18,12 +19,20 @@ export const PersonaScreens = ({navigation, route}: Props) => {
   //console.log('---',name)
   //const params = route.params as RouterParams;
   const params = route.params;
+  const {name} = params
+  const {changeName , authState:{username}} = useContext(AuthContext)
 
   useEffect(() => {
     navigation.setOptions({
       title: params?.name,
     });
   }, []);
+
+  useEffect(() => {
+   changeName(name)
+  }, []);
+
+  
 
   return (
     <View style={styles.globalMargin}>

@@ -1,16 +1,20 @@
-import React, { useContext } from 'react';
+import React, {useContext} from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
 import {Button, Text, View} from 'react-native';
 import {styles} from '../theme/appTheme';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import { AuthContext } from '../context/AuthContext';
+import {AuthContext} from '../context/AuthContext';
 
 interface Props extends StackScreenProps<any, any> {}
 
 export const Pagina1Screens = ({navigation}: Props) => {
   //console.log(navigation);
-  const {signIn, authState :{isLoggedIn}} = useContext(AuthContext)
-   return (
+  const {
+    signIn,
+    logOut,
+    authState: {isLoggedIn},
+  } = useContext(AuthContext);
+  return (
     <View style={styles.globalMargin}>
       <Text style={styles.title}>Pagina1=Screen</Text>
       <Button
@@ -24,7 +28,7 @@ export const Pagina1Screens = ({navigation}: Props) => {
       <Text>Navegar con argumentos</Text>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
-          style={{...styles.personalButton, backgroundColor:'pink'}}
+          style={{...styles.personalButton, backgroundColor: 'pink'}}
           onPress={() =>
             navigation.navigate('PersonaScreens', {id: 1, name: 'Amaury'})
           }>
@@ -38,7 +42,8 @@ export const Pagina1Screens = ({navigation}: Props) => {
           <Text>Lore</Text>
         </TouchableOpacity>
       </View>
-       { isLoggedIn && <Button title='SignIn' onPress={signIn}></Button>}
+      {isLoggedIn ? <Button title="Log Out" onPress={logOut}></Button> : <Button title="Sign In" onPress={signIn}></Button>  }
+       
     </View>
   );
 };
